@@ -5,8 +5,9 @@ const { Book, Genre, Loans, User } = require('../models');
 (async () => {
   try {
     // Import and execute the seeding logic for each table
-    await require('./seedTable1');
-    await require('./seedTable2');
+    await require('./BookData');
+    await require('./GenreData');
+    await require('./LoanData')
     // Add other tables as needed
 
     console.log('Seeding completed successfully.');
@@ -18,12 +19,12 @@ const { Book, Genre, Loans, User } = require('../models');
 //seed using anything else 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
-    /*
+    
     const users = await User.bulkCreate(userData, {
       individualHooks: true,
       returning: true,
     });
-  
+  /*
     for (const post of postData) {
       await Post.create({
         ...post,

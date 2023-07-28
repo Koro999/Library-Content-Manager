@@ -39,6 +39,13 @@ Loan.init(
         key: 'card_id',
       },
     },
+    book_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'book',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
