@@ -36,10 +36,10 @@ Book.init(
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    card_id: {
+    loan_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'card',
+        model: 'Loans',
         key: 'id',
       },
     },

@@ -7,9 +7,9 @@ const sequelize = require('../config/connection');
 //due date
 //reader_id
 
-class Loans extends Model {}
+class Loan extends Model {}
 
-Loans.init(
+Loan.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -25,23 +25,20 @@ Loans.init(
     due_date: {
       type: DataTypes.DATE,
       allowNull: false,
+      //this should show a date 2 weeks from creation
       defaultValue: sequelize.literal('DATE_ADD(NOW(), INTERVAL 2 WEEK)'),
     },
     card_number: {
       type: DataTypes.UUID,
       defaultValue: UUIDV4,
     },
-    user_id: {
+    card_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
-        key: 'id',
+        key: 'card_id',
       },
     },
-  },
-  {
-    hooks: {
-    }
   },
   {
     sequelize,
@@ -52,4 +49,4 @@ Loans.init(
   }
 );
 
-module.exports = Loans;
+module.exports = Loan;
