@@ -3,6 +3,14 @@ const sequelize = require('../config/connection');
 
 class Book extends Model {}
 
+//id
+//title
+//author
+//isbn
+//pages
+//publisher
+//copies
+
 Book.init(
   {
     id: {
@@ -20,7 +28,7 @@ Book.init(
       allowNull: false,
     },
     isbn: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull:false,
       unique: true
     },
@@ -28,18 +36,18 @@ Book.init(
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    Publisher: {
+    publisher: {
         type: DataTypes.STRING,
         allowNull: true,
     },
-    Copies: {
+    copies: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
     loan_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Loans',
+        model: 'loan',
         key: 'id',
       },
     },

@@ -52,7 +52,7 @@ Loan.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'loans',
+    modelName: 'loan',
   }
 );
 
