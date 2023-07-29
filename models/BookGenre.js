@@ -2,8 +2,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class LoanBook extends Model {}
-LoanBook.init(
+class BookGenre extends Model {}
+BookGenre.init(
   {
     // Attributes for the Enrollment model (foreign keys)
     id: {
@@ -12,13 +12,6 @@ LoanBook.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    loan_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'loan',
-        key: 'id',
-      },
-    },
     book_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -26,13 +19,20 @@ LoanBook.init(
         key: 'id',
       },
     },
+    genre_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'genre',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
-    modelName: 'loan_book',
+    modelName: 'book_genre',
     timestamps: false,
   }
 );
 
 // Export the Enrollment model
-module.exports = LoanBook;
+module.exports = BookGenre;
