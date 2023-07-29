@@ -28,10 +28,6 @@ Loan.init(
       //this should show a date 2 weeks from creation
       defaultValue: sequelize.literal('DATE_ADD(NOW(), INTERVAL 2 WEEK)'),
     },
-    card_number: {
-      type: DataTypes.UUID,
-      defaultValue: UUIDV4,
-    },
     card_id: {
       type: DataTypes.INTEGER,
       references: {

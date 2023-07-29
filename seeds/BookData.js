@@ -1,19 +1,30 @@
-const { faker } = require("@faker-js/faker");
-const { Book } = require("../models"); // Import your Sequelize model here
+const { faker } = require("@faker-js/faker"); // import faker
+const { Book, Loan } = require("../models"); // Import your Sequelize model here
 
 const TOTAL_RECORDS = 100; // Adjust this to the total number of records you want to generate
+const idArray = [];//empty array meant to hold id data 
+
+//extract all information from the Loan database, to grab ids
+(async () => {
+    try {
+      const loanData = await User.findAll();
+      idArray = userData.map((loanData) => loanData.id);
+
+      console.log('idArray', idArray);
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      // Close the connection after the operation
+      await YourModel.sequelize.close();
+    }
+});
 
 (async () => {
   await Book.sync({ force: true });
-  //title
-  //author
-  //isbn
-  //pages
-  //publisher
-  //copies
+  
   try {
-    const bookData = [];
-    for (let i = 0; i < TOTAL_RECORDS; i++) {
+    const bookData = []; //create variable object to send into db
+    for (let i = 0; i < TOTAL_RECORDS; i++) { //loop through the amount of records you want to create 
       Book.push({
         title: faker.lorem.words({ min: 1, max: 3 }),
         author: `${faker.person.firstName()}  ${faker.person.lastName()}`,
@@ -22,11 +33,12 @@ const TOTAL_RECORDS = 100; // Adjust this to the total number of records you wan
         pages: faker.number.int({ max: 500 }),
         publisher: faker.company.name(),
         copies: faker.number.int({ max: 5 }),
-        // Add other fields as needed for YourModel1
+        //pick random loan to assign books to
+        loan_id: idArray[Math.floor(Math.random() * idArray.length)] 
       });
     }
 
-    await Book.bulkCreate(bookData);
+    await Book.bulkCreate(bookData); //create records by inserting the book data. 
 
     console.log(`Successfully seeded ${TOTAL_RECORDS} records for Book Model.`);
   } catch (error) {
@@ -34,5 +46,5 @@ const TOTAL_RECORDS = 100; // Adjust this to the total number of records you wan
   }
 
   // Close the connection after the operation
-  await YourModel1.sequelize.close();
+  await Book.sequelize.close();
 })();
