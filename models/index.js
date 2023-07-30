@@ -19,14 +19,17 @@ Loan.belongsTo(User, {
 })
 
 //one to many relationship
+//in the scenario where there are multiple copies of a book
+//there would be multiple entries of said book in the db
+//I'm guessing a copy tab would keep track of that in someway
 //Loans belong to many books
-Loan.belongsTo(Book, {
-    foreignKey: 'book_id',
+Loan.hasMany(Book, {
+    foreignKey: 'loan_id',
     onDelete: 'CASCADE'
   });
-//Books belong to many Loans
-Book.hasMany(Loan, {
-    foreignKey: 'book_id',
+//Books belong to a Loan
+Book.belongsTo(Loan, {
+    foreignKey: 'loan_id',
     onDelete: 'CASCADE'
 })
 

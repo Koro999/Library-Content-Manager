@@ -9,7 +9,7 @@ const TOTAL_RECORDS = 100; // Adjust this to the total number of records you wan
   try {
     const genreData = []; //create variable object to send into db
     for (let i = 0; i < TOTAL_RECORDS; i++) { //loop through the amount of records you want to create 
-      Genre.push({
+      genreData.push({
         //genre
         genre: faker.lorem.word(),
       });
@@ -24,4 +24,4 @@ const TOTAL_RECORDS = 100; // Adjust this to the total number of records you wan
 
   // Close the connection after the operation
   await Genre.sequelize.close();
-})();
+});

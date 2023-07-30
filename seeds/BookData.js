@@ -1,5 +1,5 @@
 const { faker } = require("@faker-js/faker"); // import faker
-const { Book, Loan } = require("../models"); // Import your Sequelize model here
+const { Book, Loan, LoanBook} = require("../models"); // Import your Sequelize model here
 
 const TOTAL_RECORDS = 100; // Adjust this to the total number of records you want to generate
 const idArray = [];//empty array meant to hold id data 
@@ -8,7 +8,7 @@ const idArray = [];//empty array meant to hold id data
 (async () => {
     try {
       const loanData = await User.findAll();
-      idArray = userData.map((loanData) => loanData.id);
+      idArray = loanData.map((loanData) => loanData.id);
 
       console.log('idArray', idArray);
     } catch (error) {
@@ -25,9 +25,9 @@ const idArray = [];//empty array meant to hold id data
   try {
     const bookData = []; //create variable object to send into db
     for (let i = 0; i < TOTAL_RECORDS; i++) { //loop through the amount of records you want to create 
-      Book.push({
+      bookData.push({
         title: faker.lorem.words({ min: 1, max: 3 }),
-        author: `${faker.person.firstName()}  ${faker.person.lastName()}`,
+        author: faker.person.fullName(),
         //	xxx-x-xx-xxxxxx-x example format 
         isbn: `${faker.string.numeric(3)}-${faker.string.numeric()}-${faker.string.numeric(2)}-${faker.string.numeric(6)}-${faker.string.numeric()}`,
         pages: faker.number.int({ max: 500 }),
@@ -47,4 +47,4 @@ const idArray = [];//empty array meant to hold id data
 
   // Close the connection after the operation
   await Book.sequelize.close();
-})();
+});

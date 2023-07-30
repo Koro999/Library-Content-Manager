@@ -29,7 +29,7 @@ const idArray = [];//empty array meant to hold user data id
         const checkoutDate = faker.date.past({ years: 3 });
         const dueDate = faker.date.soon({ days: 14, refDate: checkoutDate })
 
-        Genre.push({
+        loanData.push({
         //id
         //checkout_date
         //due date
@@ -52,4 +52,4 @@ const idArray = [];//empty array meant to hold user data id
 
   // Close the connection after the operation
   await Loan.sequelize.close();
-})();
+});

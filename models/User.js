@@ -22,7 +22,7 @@ class User extends Model {
 
 User.init(
   {
-    card_number: {
+    card_id: {
       type: DataTypes.INTEGER,
       defaultValue: UUIDV4,
       allowNull: false,
@@ -44,7 +44,7 @@ User.init(
       allowNull: false,
     },
     phone_number:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     email: {

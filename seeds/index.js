@@ -1,38 +1,23 @@
-const { Sequelize } = require('sequelize');
-const { Book, Genre, Loans, User } = require('../models');
-
+const { Sequelize } = require("sequelize");
+const { Book, Genre, Loan, User } = require("../models");
 //seed using dummy data (faker)
-(async () => {
+async function seedDatabase() {
   try {
+    await sequelize.sync({ force: true });
     // Import and execute the seeding logic for each table
-    await require('./BookData');
-    await require('./GenreData');
-    await require('./LoanData')
+    // this seed order matters 
+    await require("./UserData");
+    await require("./GenreData");
+    await require("./BookData");
+    await require("./LoanData");
     // Add other tables as needed
 
-    console.log('Seeding completed successfully.');
-  } catch (error) {
-    console.error('Error during seeding:', error);
-  }
-});
-
-//seed using anything else 
-const seedDatabase = async () => {
-    await sequelize.sync({ force: true });
-    
-    const users = await User.bulkCreate(userData, {
-      individualHooks: true,
-      returning: true,
-    });
-  /*
-    for (const post of postData) {
-      await Post.create({
-        ...post,
-        user_id: users[Math.floor(Math.random() * users.length)].id,
-      });
-    }
-    */
+    console.log("Seeding completed successfully.");
     process.exit(0);
-  };
-  
-  seedDatabase();
+  } catch (error) {
+    console.error("Error during seeding:", error);
+    process.exit(0);
+  }
+};
+
+seedDatabase();
