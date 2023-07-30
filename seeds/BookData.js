@@ -5,7 +5,7 @@ const TOTAL_RECORDS = 100; // Adjust this to the total number of records you wan
 let idArray = [];//empty array meant to hold id data 
 
 //extract all information from the Loan database, to grab ids
-(async () => {
+async function seedBookData(){
   await Book.sync({ force: true });
   
   try {
@@ -35,7 +35,6 @@ let idArray = [];//empty array meant to hold id data
   } catch (error) {
     console.error("Error seeding Book Model:", error);
   }
+};
 
-  // Close the connection after the operation
-  await Book.sequelize.close();
-});
+module.exports = seedBookData;

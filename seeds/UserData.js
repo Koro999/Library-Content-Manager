@@ -5,7 +5,7 @@ const TOTAL_RECORDS = 10; // Adjust this to the total number of records you want
 
 async function seedUserData() {
   await User.sync({ force: true });
-  console.log('1')
+  //console.log('1')
   try {
     const userData = []; //create variable object to send into db
     for (let i = 0; i < TOTAL_RECORDS; i++) {
@@ -19,7 +19,7 @@ async function seedUserData() {
         password: faker.internet.password(),
       });
     }
-    console.log('2')
+      //console.log('2')
       //custom insert into db 
       userData.push({
         first_name: "test",
@@ -29,28 +29,13 @@ async function seedUserData() {
         email: "test@gmail.com",
         password: "password",
       })
-      console.log('3')
+      //console.log('3')
     await User.bulkCreate(userData); //create records by inserting the book data.
 
-    console.log(`Successfully seeded ${TOTAL_RECORDS + 1} records for Genre Model.`);
+    console.log('\x1b[32m', `Successfully seeded ${TOTAL_RECORDS + 1} records for User Model.`);
   } catch (error) {
-    console.error("Error seeding Genre Model:", error);
+    console.error("Error seeding User Model:", error);
   }
-
-  // Close the connection after the operation
-  await User.sequelize.close();
 };
 
 module.exports = seedUserData;
-/*
-[
-  {
-    first_name: "Chris",
-    last_name: "Dang",
-    address: "123 street",
-    phone_number: "435-123-1231",
-    email: "chris@gmail.com",
-    password: "password",
-  }
-];
-*/

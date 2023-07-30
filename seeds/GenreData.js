@@ -1,9 +1,9 @@
 const { faker } = require("@faker-js/faker"); // import faker
 const { Genre } = require("../models"); // Import your Sequelize model here
 
-const TOTAL_RECORDS = 100; // Adjust this to the total number of records you want to generate
+const TOTAL_RECORDS = 20; // Adjust this to the total number of records you want to generate
 
-(async () => {
+async function seedGenreData(){
   await Genre.sync({ force: true });
   
   try {
@@ -11,7 +11,7 @@ const TOTAL_RECORDS = 100; // Adjust this to the total number of records you wan
     for (let i = 0; i < TOTAL_RECORDS; i++) { //loop through the amount of records you want to create 
       genreData.push({
         //genre
-        genre: faker.lorem.word(),
+        genre: faker.lorem.words({max: 3}),
       });
     }
 
@@ -21,7 +21,6 @@ const TOTAL_RECORDS = 100; // Adjust this to the total number of records you wan
   } catch (error) {
     console.error("Error seeding Genre Model:", error);
   }
+};
 
-  // Close the connection after the operation
-  await Genre.sequelize.close();
-});
+module.exports = seedGenreData;

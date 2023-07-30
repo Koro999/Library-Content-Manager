@@ -2,15 +2,14 @@ const { faker } = require("@faker-js/faker"); // import faker
 const { Loan, User } = require("../models"); // Import your Sequelize model here
 
 const TOTAL_RECORDS = 100; // Adjust this to the total number of records you want to generate
-let idArray = []; //empty array meant to hold user data id
 
 //extract all information from the User database, to grab ids
-async () => {
+async function seedLoanData() {
   await Loan.sync({ force: true });
 
   try {
     const userData = await User.findAll();
-    idArray = userData.map((userData) => userData.id);
+    const idArray = userData.map((userData) => userData.user_id);
     //console.log("idArray", idArray);
     const loanData = []; //create variable object to send into db
     for (let i = 0; i < TOTAL_RECORDS; i++) {
@@ -29,7 +28,7 @@ async () => {
         checkout_date: checkoutDate,
         due_date: dueDate,
         //pick a random id from the users to assign the loan to
-        card_id: idArray[Math.floor(Math.random() * idArray.length)],
+        card_id: idArray[(Math.floor(Math.random() * idArray.length))],
       });
     }
 
@@ -39,7 +38,6 @@ async () => {
   } catch (error) {
     console.error("Error seeding Loan Model:", error);
   }
-
-  // Close the connection after the operation
-  await Loan.sequelize.close();
 };
+
+module.exports = seedLoanData;

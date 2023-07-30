@@ -19,7 +19,8 @@ Genre.init(
     genre: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      //genre's should be unique but for dummy data generation it's causing issues
+      //unique: true
     },
     book_id: {
       type: DataTypes.INTEGER,

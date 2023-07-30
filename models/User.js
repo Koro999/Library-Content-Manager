@@ -23,21 +23,18 @@ class User extends Model {
 User.init(
   {
     card_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(36),
       defaultValue: UUIDV4,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
     },    
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     last_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     address:{
       type: DataTypes.STRING,
