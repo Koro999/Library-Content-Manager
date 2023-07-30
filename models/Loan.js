@@ -1,7 +1,7 @@
-const { UUIDV4, Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { UUIDV4, Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
-//in this model, Loans have 
+//in this model, Loans have
 //id
 //checkout_date
 //due date
@@ -20,26 +20,24 @@ Loan.init(
     checkout_date: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.NOW,
     },
     due_date: {
       type: DataTypes.DATE,
       allowNull: false,
       //this should show a date 2 weeks from creation
-      defaultValue: sequelize.literal('DATE_ADD(NOW(), INTERVAL 2 WEEK)'),
+      defaultValue: function () {
+        // Calculate two weeks from now
+        const twoWeeksFromNow = new Date();
+        twoWeeksFromNow.setDate(twoWeeksFromNow.getDate() + 14);
+        return twoWeeksFromNow;
+      },
     },
     card_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'card_id',
-      },
-    },
-    book_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'book',
-        key: 'id',
+        model: "user",
+        key: "card_id",
       },
     },
   },
@@ -48,7 +46,7 @@ Loan.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'loan',
+    modelName: "loan",
   }
 );
 

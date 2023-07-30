@@ -1,28 +1,19 @@
 const { faker } = require("@faker-js/faker"); // import faker
-const { Book, Loan, LoanBook} = require("../models"); // Import your Sequelize model here
+const { Book, Loan} = require("../models"); // Import your Sequelize model here
 
 const TOTAL_RECORDS = 100; // Adjust this to the total number of records you want to generate
-const idArray = [];//empty array meant to hold id data 
+let idArray = [];//empty array meant to hold id data 
 
 //extract all information from the Loan database, to grab ids
-(async () => {
-    try {
-      const loanData = await User.findAll();
-      idArray = loanData.map((loanData) => loanData.id);
-
-      console.log('idArray', idArray);
-    } catch (error) {
-      console.error('Error:', error);
-    } finally {
-      // Close the connection after the operation
-      await YourModel.sequelize.close();
-    }
-});
-
 (async () => {
   await Book.sync({ force: true });
   
   try {
+    const loanData = await Loan.findAll();
+    idArray = loanData.map((loanData) => loanData.id);
+
+    console.log('idArray', idArray);
+
     const bookData = []; //create variable object to send into db
     for (let i = 0; i < TOTAL_RECORDS; i++) { //loop through the amount of records you want to create 
       bookData.push({

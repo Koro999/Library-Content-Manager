@@ -15,7 +15,7 @@ const TOTAL_RECORDS = 100; // Adjust this to the total number of records you wan
       });
     }
 
-    await Genre.bulkCreate(bookData); //create records by inserting the book data. 
+    await Genre.bulkCreate(genreData); //create records by inserting the book data. 
 
     console.log(`Successfully seeded ${TOTAL_RECORDS} records for Genre Model.`);
   } catch (error) {
