@@ -1,7 +1,5 @@
 const { BookGenre, Book, Genre } = require("../models"); // Import your Sequelize model here
 
-const TOTAL_RECORDS = 20; // Adjust this to the total number of records you want to generate
-
 async function seedBookGenreData() {
   await BookGenre.sync({ force: true });
 
@@ -34,13 +32,11 @@ async function seedBookGenreData() {
         });
       });
     });
-
-    console.log(bookGenreData)
-
+    
     await BookGenre.bulkCreate(bookGenreData); //create records by inserting the book data.
 
     console.log(
-      `Successfully seeded ${TOTAL_RECORDS} records for BookGenre Model.`
+      `Successfully seeded records for BookGenre Model.`
     );
   } catch (error) {
     console.error("Error seeding BookGenre Model:", error);
