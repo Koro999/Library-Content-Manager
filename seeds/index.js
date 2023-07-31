@@ -4,6 +4,7 @@ const seedUserData = require("./UserData");
 const seedLoanData = require("./LoanData");
 const seedBookData = require("./BookData");
 const seedGenreData = require("./GenreData");
+const seedBookGenreData = require('./BookGenreData')
 
 
 //seed using dummy data (faker)
@@ -11,11 +12,12 @@ async function seedDatabase() {
   try {
     //await sequelize.sync({ force: true });
     // Import and execute the seeding logic for each table
-    // this seed order matters 
+    // this seed order matters??
     await seedUserData();
     await seedLoanData();
     await seedBookData();
     await seedGenreData();
+    await seedBookGenreData()
 
     console.log('\x1b[32m', "Seeding completed successfully.");
     process.exit(0);

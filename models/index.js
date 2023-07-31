@@ -36,18 +36,18 @@ Book.belongsTo(Loan, {
 //many to many relationship
 //Books have many genres
 Book.belongsToMany(Genre, {
-    through: BookGenre,
+    through: BookGenre, //this is association for a junction table 
     foreignKey: 'book_id',
     onDelete: 'CASCADE'
 })
 //Genres belong to many books
 Genre.belongsToMany(Book, {
-    through: BookGenre,
-    foreignKey: 'book_id',
+    through: BookGenre,//this is association for a junction table 
+    foreignKey: 'genre_id',
     onDelete: 'CASCADE'
 })
 
-module.exports = { User, Book, Genre, Loan };
+module.exports = { User, Book, Genre, Loan, BookGenre};
 
 //hasMany == one to many
 //belongstoMany = many to many 

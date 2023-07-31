@@ -21,14 +21,7 @@ Genre.init(
       allowNull: false,
       //genre's should be unique but for dummy data generation it's causing issues
       //unique: true
-    },
-    book_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'book',
-        key: 'id',
-      },
-    },
+    }
   },
   {
     sequelize,
