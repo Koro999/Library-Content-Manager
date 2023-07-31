@@ -12,7 +12,7 @@ async function seedBookData(){
     const loanData = await Loan.findAll();
     idArray = loanData.map((loanData) => loanData.id);
 
-    console.log('idArray', idArray);
+    console.log('Loan No.:', idArray);
 
     const bookData = []; //create variable object to send into db
     for (let i = 0; i < TOTAL_RECORDS; i++) { //loop through the amount of records you want to create 

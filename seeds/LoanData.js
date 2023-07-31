@@ -9,7 +9,9 @@ async function seedLoanData() {
 
   try {
     const userData = await User.findAll();
-    const idArray = userData.map((userData) => userData.user_id);
+    const idArray = userData.map((userData) => userData.card_id);
+
+    console.log("User Card No:" + idArray)
     //console.log("idArray", idArray);
     const loanData = []; //create variable object to send into db
     for (let i = 0; i < TOTAL_RECORDS; i++) {
@@ -23,7 +25,6 @@ async function seedLoanData() {
         //checkout_date
         //due date
         //reader_id
-
         //generate dates in past x years
         checkout_date: checkoutDate,
         due_date: dueDate,

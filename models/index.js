@@ -9,12 +9,12 @@ const BookGenre = require('./BookGenre')
 //one to many relationship
 //User has many Loans
 User.hasMany(Loan, {
-  foreignKey: 'user_id',
+  foreignKey: 'card_id',
   onDelete: 'CASCADE'
 });
 //Loans belong to one User
 Loan.belongsTo(User, {
-    foreignKey: 'user_id',
+    foreignKey: 'card_id',
     onDelete: 'CASCADE'
 })
 

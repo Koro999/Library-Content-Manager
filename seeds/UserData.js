@@ -1,7 +1,7 @@
 const { faker } = require("@faker-js/faker"); // import faker
 const { User } = require("../models"); // Import your Sequelize model here
 
-const TOTAL_RECORDS = 10; // Adjust this to the total number of records you want to generate
+const TOTAL_RECORDS = 9; // Adjust this to the total number of records you want to generate
 
 async function seedUserData() {
   await User.sync({ force: true });
@@ -32,7 +32,7 @@ async function seedUserData() {
       //console.log('3')
     await User.bulkCreate(userData); //create records by inserting the book data.
 
-    console.log('\x1b[32m', `Successfully seeded ${TOTAL_RECORDS + 1} records for User Model.`);
+    console.log( `Successfully seeded ${TOTAL_RECORDS + 1} records for User Model.`);
   } catch (error) {
     console.error("Error seeding User Model:", error);
   }

@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { Book, Genre, Loan, User } = require("../models");
+//const { Book, Genre, Loan, User } = require("../models");
 const seedUserData = require("./UserData");
 const seedLoanData = require("./LoanData");
 const seedBookData = require("./BookData");
@@ -17,7 +17,7 @@ async function seedDatabase() {
     await seedBookData();
     await seedGenreData();
 
-    console.log("Seeding completed successfully.");
+    console.log('\x1b[32m', "Seeding completed successfully.");
     process.exit(0);
   } catch (error) {
     console.error("Error during seeding:", error);
