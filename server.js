@@ -11,9 +11,6 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Set up Handlebars.js engine with custom helpers
-const hbs = exphbs.create({ helpers });
-
 const sess = {
   secret: 'Super secret secret',
   cookie: {
@@ -31,8 +28,14 @@ const sess = {
 
 app.use(session(sess));
 
+// Set up Handlebars.js engine with custom helpers
+const hbs = exphbs.create({ helpers });
+
 // Inform Express.js on which template engine to use
-app.engine('handlebars', hbs.engine);
+app.engine('handlebars', hbs.engine({
+  defaultLayout: 'main',
+  layoutsDir: path.join(__dirname, 'views/layouts'), // Specify the layouts directory
+}));
 app.set('view engine', 'handlebars');
 
 app.use(express.json());

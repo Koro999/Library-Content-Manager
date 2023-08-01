@@ -1,6 +1,11 @@
 const router = require("express").Router();
+const { Loan, Book, User } = require('../../models')
+const withAuth = require("../utils/auth"); 
+//all the usual imports 
 
-const { Book } = require('../models');
+//Note: The bookRoute will handle any routes pertaining to Book information
+
+//I've not looked over this yet 
 
 // Controller function to get all books
 const getAllBooks = async (req, res) => {
