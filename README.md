@@ -24,6 +24,8 @@ npm run seed
 
 npm start
 ```
+Deployed:
+[https://library-content-manager-c82523d23485.herokuapp.com/](https://library-content-manager-c82523d23485.herokuapp.com/)
 
 ## Usage
 
@@ -34,23 +36,18 @@ npm start
 ## Credits
 
 [@Abigail C](https://github.com/abi-gail17)
-abi-gail17 
 Collaborator
 
 [@butlerem](https://github.com/butlerem)
-Emma Butler
 Collaborator
 
 [@jmorris38](https://github.com/jmorris38)
-jmorris38
 Collaborator
 
 [@VithusanU](https://github.com/VithusanU)
-VithusanU
 Collaborator
 
 [@yago-pixel](https://github.com/yago-pixel)
-Yago Lira
 Collaborator
 
 ## License
