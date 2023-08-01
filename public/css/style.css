@@ -1,0 +1,15 @@
+body {
+    padding: 40px;
+    font: 14px "Lucida Console", "Courier New", monospace;
+}
+
+a {
+    text-decoration: none;
+}
+
+#footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
