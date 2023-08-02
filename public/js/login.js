@@ -2,6 +2,9 @@ const loginFormHandler = async (event) => {
     event.preventDefault();
 
     const cardNo = document.querySelector('#cardId-login').value.trim();
+
+    const cardNo = document.querySelector('#cardNo-login').value.trim();
+
     const password = document.querySelector('#password-login').value.trim();
 
     if (cardNo && password) {
@@ -23,7 +26,11 @@ const signupFormHandler = async (event) => {
     event.preventDefault();
   
     const name = document.querySelector('#name-signup').value.trim();
+
     const cardNo = document.querySelector('#cardId-signup').value.trim();
+
+    const cardNo = document.querySelector('#cardNo-signup').value.trim();
+
     const password = document.querySelector('#password-signup').value.trim();
   
     if (name && cardNo && password) {
