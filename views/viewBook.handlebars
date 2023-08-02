@@ -1,0 +1,35 @@
+<div class="book-card col-10 col-md-12 col-lg-8 text-center border border-dark-subtle rounded shadow-sm bg-dark-subtle">
+  <div class="book-card-header my-3">
+    <h5>{{book.title}}</h5>
+  </div>
+  <div class="card-body">
+    <p>
+      Author:
+      {{book.author}}
+    </p>
+    <p>
+      Genre:
+      {{genre.genre}}
+    </p>
+    <p>
+      Publisher:
+      {{book.publisher}}
+    </p>
+    <p>
+      Copies:
+      {{book.copies}}
+    </p>
+    <p>
+      ISBN:
+      {{book.isbn}}
+    </p>
+    <p>
+      Checked Out:
+      {{format_date loan.checkout_date}}
+    </p>
+    <p>
+      Due Date:
+      {{format_date loan.due_date}}
+    </p>
+  </div>
+</div>
