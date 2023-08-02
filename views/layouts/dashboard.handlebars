@@ -1,0 +1,163 @@
+<!--dashboard layout-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home | Tech Blog</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--import Bootstrap CSS framework-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!--implement styles-->
+    <link rel="stylesheet" href="/public/css/jass.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<!-- Possible ideas to implement-->
+<!-- Currently there is no homepage-->
+<!--Should have a variety of things:
+1. Search Catalog
+2. Browse Categories 
+3. Upcoming Events - like workshops and events
+4. Library News
+5. Featured Books 
+6. Digital Resources
+7. Library services - borrowing policies, renewal information, placing things on hold 
+8. Library Membership - How to become a library member, and their benefits
+9. Library Hours 
+10. Contact Information - phone number, email and address of library
+11. Book reviews and recommendations-->
+<body class="bg-primary-subtle" style="padding-bottom: 100px">
+    <!--sidebar-->
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/"
+                        class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">Biblio Library </span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                        id="menu">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link align-middle px-0"> 
+                                <i class="fs-4 text-white bi-house"></i> <span class="text-white ms-1 d-none d-sm-inline">Home</span>
+                            </a>
+                        </li>
+                        <!--IF logged in render logout-->
+                        {{#if logged_in}}
+                        <!--ACCOUNT MANAGEMENT-->
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <span class="ms-1 d-none d-sm-inline text-white">Profile</span> </a>
+                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100"> <!--Should show account details and profile information-->
+                                    <a href="/manage-account" class="nav-link px-0"> <span class="text-white d-none d-sm-inline">Manage Account</span> 
+                                    </a>
+                                </li>
+                                <li> <!--Should allow a user to show account Balance-->
+                                    <a href="/account-balance" class="nav-link px-0"> <span class="text-white d-none d-sm-inline">View Account Balance</span> 
+                                    </a>
+                                </li>
+                                <li> 
+                                    <!--Should allow a user to show Books they've checked out in the past-->
+                                    <!--When clicking on the book you can add a personalized review/rating, plus info on whether they complete the book-->
+                                    <a href="/reading-history" class="nav-link px-0"> <span class="text-white d-none d-sm-inline">View Reading History</span> 
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!--LOAN MANAGEMENT-->
+                        <li>
+                            <a href="#" class="nav-link px-0 align-middle">
+                                <span class="text-white ms-1 d-none d-sm-inline">Loan Management</span></a>
+                            <ul class="collapse show nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                <li class="w-100"> 
+                                    <!--Should show account details and profile information-->
+                                    <a href="/loan-history" class="nav-link px-0"> <span class="text-white d-none d-sm-inline">Loan History</span> 
+                                    </a>
+                                </li>
+                                <li> 
+                                    <!--Should allow a user to renew a loan-->
+                                    <!--Should check if the book is on reservation, if not reserved allow renewal-->
+                                    <!--if books have any other restrictions regarding renewal it should be checked here as well-->
+                                    <a href="/book-renewal" class="nav-link px-0"> <span class="text-white d-none d-sm-inline">Loan Renewal</span> 
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {{/if}}   
+
+                        <!--LIBRARY MENU-->
+                        <li>
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                                <span class="ms-1 d-none d-sm-inline">Library</span></a>
+                            <ul class="collapse show nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                <li class="w-100"> 
+                                    <!--Should show account details and profile information-->
+                                    <!--Once you pull up and pick a book it should give you options to reserve and see recommendations and reviews-->
+                                    <a href="/search" class="nav-link px-0"> <span class="text-white d-none d-sm-inline">Search Catalog</span> 
+                                    </a>
+                                </li>
+                                <li> 
+                                    <!--View Events that are happening at the library-->
+                                    <!--Probably only accounts with the right permissions would be able to add and create events -->
+                                    <a href="/book-renewal" class="nav-link px-0"> <span class="text-white d-none d-sm-inline">Events</span> 
+                                    </a>
+                                </li>
+                                {{#if logged_in}}
+                                <li> 
+                                    <!--View Events that are happening at the library-->
+                                    <!--Probably only accounts with the right permissions would be able to add and create events -->
+                                    <a href="/book-suggestion" class="nav-link px-0"> <span class="text-white d-none d-sm-inline">Suggest a Book</span> 
+                                    </a>
+                                </li>
+                                {{/if}}  
+                            </ul>
+                        </li>
+
+                        <br>
+                        <!--ABOUT-->
+                        <!--Should contain contact information for the library, address, hours of operation, telephone-->
+                        <!--manager and their email-->
+                        <!--holiday closures-->
+                        <li>
+                            <a href="/about" class="nav-link px-0 align-middle">
+                                <span class=" text-white ms-1 d-none d-sm-inline">About</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <!--Sign in and sign out toggle-->
+                    {{#if logged_in}}
+                    <div class="pb-4">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="Sign Out"  >
+                            <span class="d-none d-sm-inline mx-1">Sign Out</span>
+                        </a>
+                    </div>
+                    {{else}}
+                    <div class="pb-4">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="Sign Out"  >
+                            <span class="d-none d-sm-inline mx-1">Sign In</span>
+                        </a>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="col py-3">
+                {{{ body }}}
+            </div>
+        </div>
+    </div>
+    </footer>
+</body>
+</html>
+
+<!-- Render script for logged in users only -->
+{{#if logged_in}}
+    <script src="/js/logout.js"></script>
+{{/if}}
