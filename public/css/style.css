@@ -1,4 +1,21 @@
 body {
+
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a { 
+  text-decoration: none; 
+}
+
+.text-white {
+  color: white;
+}
+
+/* Additional style to change the color of the active link in the navigation */
+.nav-pills .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.1);
+
     padding: 40px;
     font: 14px "Lucida Console", "Courier New", monospace;
 }
@@ -12,4 +29,5 @@ a {
     left: 0;
     bottom: 0;
     width: 100%;
+
 }
