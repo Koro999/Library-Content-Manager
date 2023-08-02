@@ -1,0 +1,7 @@
+ <h1 class="text=center">{{book.title}} Loan Details</h1>
+  <div class="loan-details-card ol-10 col-md-12 col-lg-8 text-center border border-dark-subtle rounded shadow-sm bg-dark-subtle">
+    <h3>Title: {{book.title}}</h3>
+    <p>Author: {{book.author}}</p>
+    <p>Loan Date: {{format_date book.checkoutDate}}</p>
+    <p>Due Date: {{format_date book.dueDate}}</p>
+  </div>

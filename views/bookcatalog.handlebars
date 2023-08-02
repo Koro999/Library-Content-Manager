@@ -1,0 +1,32 @@
+<!-- Loop over each object in the books array -->
+{{#each books as |book| }}
+<div class="book-card col-10 col-md-12 col-lg-8 text-center border border-dark-subtle rounded shadow-sm bg-dark-subtle">
+  <div class="book-card-header my-3">
+    <a href="/book/{{book.id}}">
+    <h5>{{book.title}}</h5>
+    </a>
+  </div>
+  <div class="card-body">
+    <p>
+      Author:
+      {{book.author}}
+    </p>
+    <p>
+      Genre:
+      {{genre.genre}}
+    </p>
+    <p>
+      Publisher:
+      {{book.publisher}}
+    </p>
+    <p>
+      Copies:
+      {{book.copies}}
+    </p>
+    <p>
+      ISBN:
+      {{book.isbn}}
+    </p>
+  </div>
+</div>
+{{/each}}
