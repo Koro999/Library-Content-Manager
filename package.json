@@ -16,7 +16,8 @@
     "isbn3": "^1.1.39",
     "mysql2": "^2.3.3",
     "sequelize": "^6.32.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "@faker-js/faker": "^8.0.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
