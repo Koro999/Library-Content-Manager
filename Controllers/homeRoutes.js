@@ -9,6 +9,7 @@ const { Loan, Book, User } = require('../models') //import models for use
 //NOTE: These routes do are not accessed until we specifically move to  https:// <example>/login , that is done all on the frontend
 // I have it like this in should a homepage be inserted at some point it can be done 
 
+//render the login template
 router.get('/', (req, res) => {
   res.render('login'); // 
 });
