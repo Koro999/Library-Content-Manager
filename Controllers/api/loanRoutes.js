@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const { Loan, Book, User } = require('../../models')
-const withAuth = require("../utils/auth"); 
+const withAuth = require('../../utils/auth');
 //all the usual imports 
 
-//Note: The CheckoutRoute will handle any routes pertaining to loan information
+//Note: The loanRoute will handle any routes pertaining to loan information
 
 //this route will allow us to pull up a more specific dissertation of the loan 
 router.get("/loan/:id", withAuth, async (req, res) => {
@@ -36,3 +36,4 @@ router.get("/loan/:id", withAuth, async (req, res) => {
     }
   });
   
+  module.exports = router;

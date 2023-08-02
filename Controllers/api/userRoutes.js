@@ -3,7 +3,6 @@ const { User } = require('../../models'); //make sure the route here is correct
 
 //NOTE: userRoutes, will handle anything pertaining to user information ex. login logout signup etc
 
-
 // Handles user login validation
 // this route is specifically called by the js tied to the login page 
 router.post('/login', async (req, res) => {
@@ -58,3 +57,5 @@ router.post('/login', async (req, res) => {
       res.status(404).end();
     }
   });
+
+  module.exports = router;

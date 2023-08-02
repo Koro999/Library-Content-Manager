@@ -6,7 +6,7 @@ const { Loan, Book, User } = require('../models')
 const withAuth = require("../utils/auth"); 
 
 //Dashboard route
-//1. This is it's own seperate layout but will be used as long as your logged in
+//1. This is it's own separate layout but will be used as long as your logged in
 //2. On load the page will automatically show you checkout history
 //3. Will also handle logout
 
@@ -46,17 +46,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
     }
   });
 
-  //handles the logout 
-  router.post('/logout', (req, res) => {
-    if (req.session.logged_in) {
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    } else {
-      res.status(404).end();
-    }
-  });
-
+  module.exports = router;
 
 //What is this accomplishing?
 /*
